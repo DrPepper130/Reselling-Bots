@@ -42,7 +42,7 @@
             const invite_link = document.getElementById('invite_link').value;
             const amount = document.getElementById('amount').value;
 
-            fetch('http://127.0.0.1:4040', {
+            fetch('http://localhost:3000', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ service, invite_link, amount })
