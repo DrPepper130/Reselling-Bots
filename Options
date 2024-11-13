@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Discord Members</title>
+  <style>
+    .button-container { text-align: center; margin-top: 50px; }
+  </style>
+</head>
+<body>
+
+<div class="button-container">
+  <h2>Buy Discord Members</h2>
+  <button onclick="redirectToPayment(50)">Buy 50 Members</button>
+  <button onclick="redirectToPayment(100)">Buy 100 Members</button>
+  <button onclick="redirectToPayment(200)">Buy 200 Members</button>
+</div>
+
+<script>
+  function redirectToPayment(amount) {
+    // Redirect to the payment page based on the selected amount
+    window.location.href = `payment.html?amount=${amount}`;
+  }
+</script>
+
+</body>
+</html>
