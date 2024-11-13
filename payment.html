@@ -13,36 +13,23 @@
 
 <div class="form-container">
   <h2>Complete Purchase</h2>
-  <label for="inviteLink">Discord Invite Link:</label>
-  <input type="url" id="inviteLink" name="invite_link" required placeholder="Enter your Discord invite link">
-</div>
-
-<div class="button-container">
   <button id="payButton">Proceed to Payment</button>
 </div>
 
 <script>
   const stripe = Stripe('pk_live_51QJfClGxXpXnuA0i3dmpHLg2k08fRzaejMmqxTsBMmnm2AwoTs3xVFzN0Iq16eZeIhu17072qvgOPeo8hlinU3G9001CJhEarJ'); // Replace with your actual Stripe publishable key
-  const payButton = document.getElementById('payButton');
   const urlParams = new URLSearchParams(window.location.search);
   const amount = urlParams.get('amount');
 
-  payButton.addEventListener('click', async () => {
-    const inviteLink = document.getElementById('inviteLink').value;
-
-    if (!inviteLink) {
-      alert('Please enter a valid Discord invite link.');
-      return;
-    }
-
+  document.getElementById('payButton').addEventListener('click', async () => {
     try {
       // Send request to the server to create a checkout session
       const response = await fetch('https://ab3e-2601-603-5401-f520-44ba-f040-cd89-f0ec.ngrok-free.app', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ amount, invite_link: inviteLink }),
+        body: JSON.stringify({ amount }),
       });
-      
+
       const session = await response.json();
 
       // Redirect to Stripe Checkout
