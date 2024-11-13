@@ -40,11 +40,17 @@
 
     try {
       // Send request to the server to create a checkout session
-      const response = await fetch('https://82b4-76-135-72-26.ngrok-free.app', {
+      const response = await fetch('https://82b4-76-135-72-26.ngrok-free.app/create-checkout-session', { // Updated to include the correct endpoint
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount, invite_link: inviteLink }),
       });
+
+      // Check if the response is OK before trying to parse it
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
       const session = await response.json();
 
       // Redirect to Stripe Checkout
