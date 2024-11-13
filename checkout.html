@@ -41,7 +41,7 @@
 
 <script>
   // Initialize Stripe with your publishable key
-  const stripe = Stripe('your_stripe_publishable_key_here'); // Replace with your publishable key
+  const stripe = Stripe('pk_test_51QJfClGxXpXnuA0iCriSvYVi8UUAeVSDuQDTsqpf5fAxrrYys3A0HWpgPxy1PHFt9fJzMVIJG7BGGvHVU5E2vJR1001PjRxpcQ'); // Replace with your publishable key
 
   // Set up Stripe.js and Elements to use in checkout form
   const elements = stripe.elements();
@@ -75,7 +75,7 @@
     document.getElementById('submit').disabled = true;
 
     // Create a payment intent on the server
-    const { clientSecret } = await fetch('https://your_ngrok_url.ngrok-free.app/create-payment-intent', {
+    const { clientSecret } = await fetch('https://13ee-2601-603-5401-f520-44ba-f040-cd89-f0ec.ngrok-free.app', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ invite_link: inviteLink, amount: 5000 }) // Example amount: $50
