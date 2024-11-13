@@ -1,1 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Discord Members</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    /* Basic styles */
+    .form-container { max-width: 400px; margin: auto; padding: 20px; text-align: center; }
+    .form-group { margin-bottom: 15px; }
+    input { width: 100%; padding: 8px; }
+    button { padding: 10px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+    button:disabled { background-color: #ccc; }
+  </style>
+</head>
+<body>
 
+<div class="form-container">
+  <h2>Buy Discord Members</h2>
+
+  <!-- Discord Invite Link Input -->
+  <div class="form-group">
+    <label for="inviteLink">Discord Invite Link:</label>
+    <input type="url" id="inviteLink" required placeholder="Enter your Discord invite link">
+  </div>
+
+  <!-- Stripe Elements Payment Form -->
+  <form id="payment-form">
+    <div id="card-element">
+      <!-- A Stripe Element will be inserted here. -->
+    </div>
+
+    <!-- Error message placeholder -->
+    <div id="card-errors" role="alert"></div>
+
+    <!-- Submit button -->
+    <button id="submit" disabled>Submit Payment</button>
+  </form>
+</div>
+
+<script>
+  // Initialize Stripe with your publishable key
+  const stripe = Stripe('your_stripe_publishable_key_here'); // Replace with your publishable key
+
+  // Set up Stripe.js and Elements to use in checkout form
+  const elements = stripe.elements();
+  const cardElement = elements.create('card');
+  cardElement.mount('#card-element');
+
+  // Handle real-time validation errors from the card Element.
+  cardElement.on('change', ({error}) => {
+    const displayError = document.getElementById('card-errors');
+    if (error) {
+      displayError.textContent = error.message;
+      document.getElementById('submit').disabled = true;
+    } else {
+      displayError.textContent = '';
+      document.getElementById('submit').disabled = false;
+    }
+  });
+
+  // Handle form submission
+  const form = document.getElementById('payment-form');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const inviteLink = document.getElementById('inviteLink').value;
+    if (!inviteLink) {
+      alert('Please enter your Discord invite link.');
+      return;
+    }
+
+    // Disable the button while processing
+    document.getElementById('submit').disabled = true;
+
+    // Create a payment intent on the server
+    const { clientSecret } = await fetch('https://your_ngrok_url.ngrok-free.app/create-payment-intent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ invite_link: inviteLink, amount: 5000 }) // Example amount: $50
+    }).then(res => res.json());
+
+    // Confirm the payment using the client secret
+    const { error } = await stripe.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: cardElement,
+        billing_details: {
+          name: 'Customer Name', // Optional: add customer name if you collect it
+        },
+      },
+    });
+
+    if (error) {
+      // Show error to your customer (e.g., insufficient funds)
+      const displayError = document.getElementById('card-errors');
+      displayError.textContent = error.message;
+      document.getElementById('submit').disabled = false;
+    } else {
+      // Payment succeeded, handle invite link submission
+      alert('Payment successful and invite link received!');
+    }
+  });
+</script>
+
+</body>
+</html>
