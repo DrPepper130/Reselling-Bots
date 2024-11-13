@@ -28,7 +28,7 @@
 
 <script>
   // Initialize Stripe with your publishable key
-  const stripe = Stripe('your-stripe-publishable-key'); // Replace with your actual Stripe publishable key
+  const stripe = Stripe('pk_test_51QJfClGxXpXnuA0iCriSvYVi8UUAeVSDuQDTsqpf5fAxrrYys3A0HWpgPxy1PHFt9fJzMVIJG7BGGvHVU5E2vJR1001PjRxpcQ'); // Replace with your actual Stripe publishable key
 
   // Function to handle purchase
   async function handlePurchase(amount) {
@@ -40,7 +40,7 @@
 
     try {
       // Send request to the server to create a checkout session
-      const response = await fetch('http://localhost:3000/create-checkout-session', {
+      const response = await fetch('https://82b4-76-135-72-26.ngrok-free.app', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount, invite_link: inviteLink }),
