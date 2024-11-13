@@ -39,17 +39,12 @@
     }
 
     try {
-      // Replace the localhost URL with your ngrok forwarding URL
-      const response = await fetch('https://6443-76-135-72-26.ngrok-free.app', {
+      // Send request to the server to create a checkout session
+      const response = await fetch('https://1572-2601-603-5401-f520-44ba-f040-cd89-f0ec.ngrok-free.app', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount, invite_link: inviteLink }),
       });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
       const session = await response.json();
 
       // Redirect to Stripe Checkout
