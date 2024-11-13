@@ -1,13 +1,14 @@
 <!DOCTYPE html><!--  This site was created in Webflow. https://webflow.com  --><!--  Last Published: Wed Nov 13 2024 23:07:10 GMT+0000 (Coordinated Universal Time)  -->
-<html data-wf-page="67351f90b6a865a4c3482b82" data-wf-site="67351f87b6a865a4c3481b94">
+<html data-wf-page="67351f90b6a865a4c3482b92" data-wf-site="67351f87b6a865a4c3481b94">
 <head>
   <meta charset="utf-8">
-  <title>Biznus Template - Webflow Ecommerce Website Template</title>
+  <base target="_parent">
+  <title>Checkout (PayPal)</title>
   <meta content="The Biznus Template is focused on helping small and medium-sized businesses move their retail shop online.  Get your retail delivery business started with Webflow today." name="description">
-  <meta content="Biznus Template - Webflow Ecommerce Website Template" property="og:title">
+  <meta content="Checkout (PayPal)" property="og:title">
   <meta content="The Biznus Template is focused on helping small and medium-sized businesses move their retail shop online.  Get your retail delivery business started with Webflow today." property="og:description">
   <meta content="https://uploads-ssl.webflow.com/5e7ff3ec0c4ef4c974fa99e3/5e8648e562387a70db3bd718_Open%20Graph%20-%20Red%20-%20Home.jpg" property="og:image">
-  <meta content="Biznus Template - Webflow Ecommerce Website Template" property="twitter:title">
+  <meta content="Checkout (PayPal)" property="twitter:title">
   <meta content="The Biznus Template is focused on helping small and medium-sized businesses move their retail shop online.  Get your retail delivery business started with Webflow today." property="twitter:description">
   <meta content="https://uploads-ssl.webflow.com/5e7ff3ec0c4ef4c974fa99e3/5e8648e562387a70db3bd718_Open%20Graph%20-%20Red%20-%20Home.jpg" property="twitter:image">
   <meta property="og:type" content="website">
@@ -36,10 +37,10 @@
     <div data-collapse="medium" data-animation="over-right" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="navbar w-nav">
       <div class="container">
         <div class="nav-wrapper">
-          <a href="index.html" aria-current="page" class="brand w-nav-brand w--current"><img src="images/New-Project-2.png" alt="" width="189" height="Auto" sizes="(max-width: 479px) 80px, 189px" srcset="images/New-Project-2.png 500w, images/New-Project-2.png 800w" class="image-2"></a>
+          <a href="index.html" class="brand w-nav-brand"><img src="images/New-Project-2.png" alt="" width="189" height="Auto" sizes="(max-width: 479px) 80px, 189px" srcset="images/New-Project-2.png 500w, images/New-Project-2.png 800w" class="image-2"></a>
           <div class="cart-nav-wrapper">
             <nav role="navigation" class="nav-menu w-nav-menu">
-              <a href="index.html" aria-current="page" class="nav-link w-nav-link w--current">Home</a>
+              <a href="index.html" class="nav-link w-nav-link">Home</a>
               <a href="about.html" class="nav-link w-nav-link">Deals</a>
               <a href="shop.html" class="nav-link w-nav-link">Shop</a>
             </nav>
@@ -127,100 +128,125 @@
       </div>
     </div>
   </div>
-  <div class="hero-section">
+  <div class="page-title-section">
     <div class="container">
-      <div class="hero-wrapper">
-        <h1 class="hero-heading"></h1>
-        <p class="hero-paragraph">Acme Outdoors is an outdoor and adventure shop located in the Boathouse District in Oklahoma City.</p>
-        <div class="hero-button-wrapper">
-          <a href="shop.html" class="btn light outline w-button"></a>
-        </div>
-      </div>
+      <h1 class="page-title">Checkout</h1>
     </div>
   </div>
-  <div class="support-section">
-    <div class="container">
-      <div class="support-top-wrapper">
-        <div class="support-top-left">
-          <div class="support-top-details-text">Ways to support</div>
-          <h2 class="support-top-heading">Support Acme Outdoors.</h2>
-        </div>
-        <div class="support-top-right">
-          <p>COVID-19 has forced us to close our retail space, but we need support from patrons like yourself now more than ever. Below, we’ve listed the best ways to help us through this season.</p>
-        </div>
-      </div>
-      <div class="support-wrapper">
-        <div class="support-column">
-          <div class="support-square"><img src="images/Circle.svg" alt="Circle Decoration in Shop Products Block" class="support-square-image">
-            <a href="https://drpepper130.github.io/Reselling-Bots/Options.html" class="button w-button">Discord</a>
+  <div class="content-section">
+    <div data-node-type="commerce-paypal-checkout-form-container" data-wf-checkout-query="" data-wf-page-link-href-prefix="" class="w-commerce-commercepaypalcheckoutformcontainer paypal-checkout-form">
+      <div class="w-commerce-commercelayoutcontainer container-checkout w-container">
+        <div class="w-commerce-commercelayoutmain">
+          <form data-node-type="commerce-checkout-shipping-methods-wrapper" class="w-commerce-commercecheckoutshippingmethodswrapper">
+            <div class="w-commerce-commercecheckoutblockheader block-header">
+              <h4>Shipping Method</h4>
+            </div>
+            <fieldset>
+              <script type="text/x-wf-template" id="wf-template-5e853c3379b34f2bd3675eec000000000012">%3Clabel%20class%3D%22w-commerce-commercecheckoutshippingmethoditem%22%3E%3Cinput%20required%3D%22%22%20type%3D%22radio%22%20name%3D%22shipping-method-choice%22%2F%3E%3Cdiv%20class%3D%22w-commerce-commercecheckoutshippingmethoddescriptionblock%22%3E%3Cdiv%20class%3D%22w-commerce-commerceboldtextblock%22%3E%3C%2Fdiv%3E%3Cdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E%3Cdiv%3E%3C%2Fdiv%3E%3C%2Flabel%3E</script>
+              <div data-node-type="commerce-checkout-shipping-methods-list" class="w-commerce-commercecheckoutshippingmethodslist" data-wf-collection="database.commerceOrder.availableShippingMethods" data-wf-template-id="wf-template-5e853c3379b34f2bd3675eec000000000012"><label class="w-commerce-commercecheckoutshippingmethoditem"><input required="" type="radio" name="shipping-method-choice">
+                  <div class="w-commerce-commercecheckoutshippingmethoddescriptionblock">
+                    <div class="w-commerce-commerceboldtextblock"></div>
+                    <div></div>
+                  </div>
+                  <div></div>
+                </label></div>
+              <div data-node-type="commerce-checkout-shipping-methods-empty-state" style="display:none" class="w-commerce-commercecheckoutshippingmethodsemptystate">
+                <div>No shipping methods are available for the address given.</div>
+              </div>
+            </fieldset>
+          </form>
+          <div class="w-commerce-commercecheckoutcustomerinfosummarywrapper">
+            <div class="w-commerce-commercecheckoutsummaryblockheader block-header">
+              <h4>Customer Information</h4>
+            </div>
+            <fieldset class="w-commerce-commercecheckoutblockcontent block-content">
+              <div class="w-commerce-commercecheckoutrow">
+                <div class="w-commerce-commercecheckoutcolumn">
+                  <div class="w-commerce-commercecheckoutsummaryitem"><label class="w-commerce-commercecheckoutsummarylabel">Email</label>
+                    <div></div>
+                  </div>
+                </div>
+                <div class="w-commerce-commercecheckoutcolumn">
+                  <div class="w-commerce-commercecheckoutsummaryitem"><label class="w-commerce-commercecheckoutsummarylabel">Shipping Address</label>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="w-commerce-commercecheckoutsummaryflexboxdiv">
+                      <div class="w-commerce-commercecheckoutsummarytextspacingondiv"></div>
+                      <div class="w-commerce-commercecheckoutsummarytextspacingondiv"></div>
+                      <div class="w-commerce-commercecheckoutsummarytextspacingondiv"></div>
+                    </div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
           </div>
-          <p>Our full product line is still available online here on our site! Getting outside and hiking is still something you can do. Get your gear now!</p>
-        </div>
-        <div class="support-column">
-          <div class="support-square">
-            <a href="https://drpepper130.github.io/Reselling-Bots/Options.html" class="button w-button">Discord</a><img src="images/Triangle.svg" alt="Triangle Decoration in Donate Block" class="support-square-image triangle">
+          <div class="w-commerce-commercecheckoutpaymentsummarywrapper">
+            <div class="w-commerce-commercecheckoutsummaryblockheader block-header">
+              <h4>Payment Info</h4>
+            </div>
+            <fieldset class="w-commerce-commercecheckoutblockcontent block-content">
+              <div class="w-commerce-commercecheckoutrow">
+                <div class="w-commerce-commercecheckoutcolumn">
+                  <div class="w-commerce-commercecheckoutsummaryitem"><label class="w-commerce-commercecheckoutsummarylabel">Payment Info</label>
+                    <div class="w-commerce-commercecheckoutsummaryflexboxdiv">
+                      <div class="w-commerce-commercecheckoutsummarytextspacingondiv"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="w-commerce-commercecheckoutcolumn">
+                  <div class="w-commerce-commercecheckoutsummaryitem"><label class="w-commerce-commercecheckoutsummarylabel">Billing Address</label>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div class="w-commerce-commercecheckoutsummaryflexboxdiv">
+                      <div class="w-commerce-commercecheckoutsummarytextspacingondiv"></div>
+                      <div class="w-commerce-commercecheckoutsummarytextspacingondiv"></div>
+                      <div class="w-commerce-commercecheckoutsummarytextspacingondiv"></div>
+                    </div>
+                    <div></div>
+                  </div>
+                </div>
+              </div>
+            </fieldset>
           </div>
-          <p>Since we&#x27;ve changed the way we operate to online only, and to ensure your safety, not all our staff is working. Donate to keep them afloat.</p>
-        </div>
-        <div class="support-column">
-          <div class="support-square"><img src="images/Rectangle.svg" alt="Rectangle Decoration in Buy Gift Cards Block" class="support-square-image rectangle">
-            <a href="https://drpepper130.github.io/Reselling-Bots/Options.html" class="button w-button">Discord</a>
+          <div class="w-commerce-commercecheckoutorderitemswrapper">
+            <div class="w-commerce-commercecheckoutsummaryblockheader block-header">
+              <h4>Items in Order</h4>
+            </div>
+            <fieldset class="w-commerce-commercecheckoutblockcontent block-content">
+              <script type="text/x-wf-template" id="wf-template-5e853c3379b34f2bd3675eec000000000050"></script>
+              <div role="list" class="w-commerce-commercecheckoutorderitemslist" data-wf-collection="database.commerceOrder.userItems" data-wf-template-id="wf-template-5e853c3379b34f2bd3675eec000000000050"></div>
+            </fieldset>
           </div>
-          <p>Have all the outdoor gear you need for now? Buy a gift card and use it later or share it with friends and family. </p>
         </div>
-      </div>
-      <div class="support-wrapper">
-        <div class="support-column">
-          <div class="support-square"><img src="images/Circle.svg" alt="Circle Decoration in Shop Products Block" class="support-square-image">
-            <a href="https://drpepper130.github.io/Reselling-Bots/Options.html" class="button w-button">Discord</a>
+        <div class="w-commerce-commercelayoutsidebar">
+          <div class="w-commerce-commercecheckoutordersummarywrapper">
+            <div class="w-commerce-commercecheckoutsummaryblockheader block-header">
+              <h4>Order Summary</h4>
+            </div>
+            <fieldset class="w-commerce-commercecheckoutblockcontent block-content">
+              <div class="w-commerce-commercecheckoutsummarylineitem">
+                <div>Subtotal</div>
+                <div></div>
+              </div>
+              <script type="text/x-wf-template" id="wf-template-5e853c3379b34f2bd3675eec00000000006a">%3Cdiv%20class%3D%22w-commerce-commercecheckoutordersummaryextraitemslistitem%22%3E%3Cdiv%3E%3C%2Fdiv%3E%3Cdiv%3E%3C%2Fdiv%3E%3C%2Fdiv%3E</script>
+              <div class="w-commerce-commercecheckoutordersummaryextraitemslist" data-wf-collection="database.commerceOrder.extraItems" data-wf-template-id="wf-template-5e853c3379b34f2bd3675eec00000000006a">
+                <div class="w-commerce-commercecheckoutordersummaryextraitemslistitem">
+                  <div></div>
+                  <div></div>
+                </div>
+              </div>
+              <div class="w-commerce-commercecheckoutsummarylineitem">
+                <div>Total</div>
+                <div class="w-commerce-commercecheckoutsummarytotal"></div>
+              </div>
+            </fieldset>
           </div>
-          <p>Our full product line is still available online here on our site! Getting outside and hiking is still something you can do. Get your gear now!</p>
-        </div>
-        <div class="support-column">
-          <div class="support-square"><img src="images/Triangle.svg" alt="Triangle Decoration in Donate Block" class="support-square-image triangle">
-            <a href="https://drpepper130.github.io/Reselling-Bots/Options.html" class="button w-button">Discord</a>
-          </div>
-          <p>Since we&#x27;ve changed the way we operate to online only, and to ensure your safety, not all our staff is working. Donate to keep them afloat.</p>
-        </div>
-        <div class="support-column">
-          <div class="support-square"><img src="images/Rectangle.svg" alt="Rectangle Decoration in Buy Gift Cards Block" class="support-square-image rectangle">
-            <a href="https://drpepper130.github.io/Reselling-Bots/Options.html" class="button w-button">Discord</a>
-          </div>
-          <p>Have all the outdoor gear you need for now? Buy a gift card and use it later or share it with friends and family. </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="safe-section">
-    <div class="container">
-      <div class="safe-wrapper">
-        <h2 class="safe-heading">Why buy from us?</h2>
-        <p class="safe-paragraph">We understand time is valuable and make it our number one priority to deliver a fast and effective product for our customers.</p>
-        <div class="safe-button-wrapper">
-          <a href="/alert/how-were-responding-to-covid-19" class="btn light hero safe w-button">Read Our Statement</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="products-section">
-    <div class="container">
-      <div class="shop-more">
-        <a href="shop.html" class="btn dark w-button">View All Products</a>
-      </div>
-    </div>
-  </div>
-  <div class="shop-local-section">
-    <div class="container shop-local-container">
-      <div class="shop-local-wrapper">
-        <div class="shop-local-right">
-          <div class="shop-local-content-wrapper">
-            <h2 class="shop-local-heading">Shop Local.</h2>
-            <p>We know that during COVID-19, a lot of folks around the city and state are feeling uneasy about the future - we’re not sure what the future holds either.</p>
-            <p>That said: we know that we love making sure you have the gear you need for your adventures, and we’re going to keep doing that - with our team - until the city tells us we can’t.</p>
-            <p>But as long as folks like yourself support small businesses around the city, then we’ll be here — every day, making sure your orders arrive on time.</p>
-            <p>-------</p>
-            <div>Jane &amp; John Doe</div>
-            <div><strong>Acme Outdoors</strong></div>
+          <a href="#" value="Place Order" data-node-type="commerce-checkout-place-order-button" class="w-commerce-commercecheckoutplaceorderbutton btn" data-loading-text="Placing Order...">Place Order</a>
+          <div data-node-type="commerce-checkout-error-state" style="display:none" class="w-commerce-commercepaypalcheckouterrorstate">
+            <div aria-live="polite" class="w-checkout-error-msg" data-w-info-error="There was an error processing your customer info. Please try again, or contact us if you continue to have problems." data-w-shipping-error="Sorry. We can’t ship your order to the address provided." data-w-billing-error="Your payment could not be completed with the payment information provided. Please make sure that your card and billing address information is correct, or try a different payment card, to complete this order. Contact us if you continue to have problems." data-w-minimum-error="The order minimum was not met. Add more items to your cart to continue." data-w-payment-error="There was an error processing your payment. Please try again, or contact us if you continue to have problems." data-w-pricing-error="The prices of one or more items in your cart have changed. Please refresh this page and try again." data-w-extras-error="A merchant setting has changed that impacts your cart. Please refresh and try again." data-w-product-error="One or more of the products in your cart have been removed. Please refresh the page and try again." data-w-invalid-discount-error="This discount is invalid." data-w-expired-discount-error="This discount is no longer available." data-w-usage-reached-discount-error="This discount is no longer available." data-w-requirements-not-met-error="Your order does not meet the requirements for this discount.">There was an error processing your customer info. Please try again, or contact us if you continue to have problems.</div>
           </div>
         </div>
       </div>
@@ -230,7 +256,7 @@
     <div class="container">
       <div class="footer-wrapper">
         <div class="footer-logo-column">
-          <a href="index.html" aria-current="page" class="w-inline-block w--current"><img src="images/logo.svg" alt="Acme Outdoors Logo"></a>
+          <a href="index.html" class="w-inline-block"><img src="images/logo.svg" alt="Acme Outdoors Logo"></a>
         </div>
         <div>
           <a href="https://twitter.com/webflow" target="_blank" class="social-footer-link w-inline-block"><img src="images/Twitter_Social_Icon_Rounded_Square_White.svg" width="30" alt="Twitter Logo"></a>
