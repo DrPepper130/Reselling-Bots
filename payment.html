@@ -17,14 +17,14 @@
 </div>
 
 <script>
-  const stripe = Stripe('pk_live_51QJfClGxXpXnuA0i3dmpHLg2k08fRzaejMmqxTsBMmnm2AwoTs3xVFzN0Iq16eZeIhu17072qvgOPeo8hlinU3G9001CJhEarJ'); // Replace with your actual Stripe publishable key
+  const stripe = Stripe('pk_test_51QJfClGxXpXnuA0iCriSvYVi8UUAeVSDuQDTsqpf5fAxrrYys3A0HWpgPxy1PHFt9fJzMVIJG7BGGvHVU5E2vJR1001PjRxpcQ'); // Replace with your actual Stripe publishable key
   const urlParams = new URLSearchParams(window.location.search);
   const amount = urlParams.get('amount');
 
   document.getElementById('payButton').addEventListener('click', async () => {
     try {
       // Send request to the server to create a checkout session
-      const response = await fetch('https://ab3e-2601-603-5401-f520-44ba-f040-cd89-f0ec.ngrok-free.app', {
+      const response = await fetch('https://13ee-2601-603-5401-f520-44ba-f040-cd89-f0ec.ngrok-free.app', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount }),
