@@ -22,7 +22,7 @@
 </div>
 
 <script>
-  const stripe = Stripe('your_stripe_publishable_key_here'); // Replace with your actual Stripe publishable key
+  const stripe = Stripe('pk_live_51QJfClGxXpXnuA0i3dmpHLg2k08fRzaejMmqxTsBMmnm2AwoTs3xVFzN0Iq16eZeIhu17072qvgOPeo8hlinU3G9001CJhEarJ'); // Replace with your actual Stripe publishable key
   const payButton = document.getElementById('payButton');
   const urlParams = new URLSearchParams(window.location.search);
   const amount = urlParams.get('amount');
@@ -37,7 +37,7 @@
 
     try {
       // Send request to the server to create a checkout session
-      const response = await fetch('https://your_ngrok_forwarding_url_here/create-checkout-session', {
+      const response = await fetch('https://ab3e-2601-603-5401-f520-44ba-f040-cd89-f0ec.ngrok-free.app', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ amount, invite_link: inviteLink }),
