@@ -1,71 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord Members Purchase</title>
-    <style>
-        body { font-family: Arial, sans-serif; padding: 50px; background-color: #f0f0f0; }
-        .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
-        label { margin-bottom: 10px; display: block; }
-        input, select { width: 100%; padding: 10px; margin-bottom: 20px; border-radius: 5px; border: 1px solid #ccc; }
-        button { padding: 10px 15px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
-        button:hover { background-color: #218838; }
-    </style>
-    <script src="https://js.stripe.com/v3/"></script> <!-- Include Stripe.js -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buy Discord Members</title>
+  <script src="https://js.stripe.com/v3/"></script>
+  <style>
+    /* Basic styles for the layout */
+    .form-container, .button-container { text-align: center; }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Buy Discord Members</h1>
-        <form id="purchaseForm">
-            <label for="service">Service:</label>
-            <select id="service" required>
-                <option value="Offline Members">Offline Members</option>
-                <option value="Online Members">Online Members</option>
-            </select>
 
-            <label for="invite_link">Discord Invite Link:</label>
-            <input type="url" id="invite_link" required>
+<div class="form-container">
+  <h2>Buy Discord Members</h2>
+  <form id="purchaseForm">
+    <label for="inviteLink">Discord Invite Link:</label>
+    <input type="url" id="inviteLink" name="invite_link" required>
+  </form>
+</div>
 
-            <label for="amount">Number of Members:</label>
-            <input type="number" id="amount" min="1" required>
+<div class="button-container">
+  <button onclick="handlePurchase(50)">Buy 50 Members</button>
+  <button onclick="handlePurchase(100)">Buy 100 Members</button>
+  <button onclick="handlePurchase(200)">Buy 200 Members</button>
+</div>
 
-            <button type="submit">Submit</button>
-        </form>
-        <div id="resultMessage"></div>
-    </div>
+<script>
+  // Initialize Stripe with your publishable key
+  const stripe = Stripe('your-stripe-publishable-key'); // Replace with your actual Stripe publishable key
 
-    <script>
-        // Initialize Stripe with your publishable key
-        const stripe = Stripe("pk_test_51QJfClGxXpXnuA0iCriSvYVi8UUAeVSDuQDTsqpf5fAxrrYys3A0HWpgPxy1PHFt9fJzMVIJG7BGGvHVU5E2vJR1001PjRxpcQ");
+  // Function to handle purchase
+  async function handlePurchase(amount) {
+    const inviteLink = document.getElementById('inviteLink').value;
+    if (!inviteLink) {
+      alert('Please enter a Discord invite link.');
+      return;
+    }
 
-        document.getElementById('purchaseForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+    try {
+      // Send request to the server to create a checkout session
+      const response = await fetch('http://localhost:3000/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount, invite_link: inviteLink }),
+      });
+      const session = await response.json();
 
-            const service = document.getElementById('service').value;
-            const invite_link = document.getElementById('invite_link').value;
-            const amount = document.getElementById('amount').value;
-            const priceInCents = amount * 1; // Each bot costs $0.01 (or 1 cent)
+      // Redirect to Stripe Checkout
+      await stripe.redirectToCheckout({ sessionId: session.id });
+    } catch (error) {
+      console.error('Error in handling purchase:', error);
+      alert('Payment failed. Please try again.');
+    }
+  }
+</script>
 
-            // Send data to the backend to create a Checkout session
-            fetch('https://8758-76-135-72-26.ngrok-free.app', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ service, invite_link, amount, priceInCents })
-            })
-            .then(response => response.json())
-            .then(session => {
-                return stripe.redirectToCheckout({ sessionId: session.id });
-            })
-            .then(result => {
-                if (result.error) {
-                    document.getElementById('resultMessage').innerText = result.error.message;
-                }
-            })
-            .catch(error => {
-                document.getElementById('resultMessage').innerText = 'An error occurred.';
-            });
-        });
-    </script>
 </body>
 </html>
